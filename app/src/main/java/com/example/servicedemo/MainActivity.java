@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         System.out.println("Committing this on Master Branch");
-        System.out.println("Comitting this on Experimental Branch");
+        System.out.println("Committing this on Experimental Branch");
     }
 }
