@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("hello","Activity oncreate");
+        Log.d("hello","Activity onCreate");
         intent = new Intent(this , MyService.class);
         textView = findViewById(R.id.textView);
     }
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void retrieveRandomNumber(View view) {
         if(isServiceConnected) {
-            textView.setText("Random Number Retreived from Server : "+myService.getRandomNumber());
+            textView.setText(getString(R.string.random_number,myService.getRandomNumber()));
         } else
             Toast.makeText(this, "Service not bound", Toast.LENGTH_SHORT).show();
     }
