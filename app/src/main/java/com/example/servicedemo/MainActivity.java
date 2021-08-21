@@ -6,12 +6,17 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +32,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d("hello","Activity onCreate");
         intent = new Intent(this , MyService.class);
         textView = findViewById(R.id.textView);
+
+        Intent mapIntent = new Intent(Intent.ACTION_SEND);
+
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(mapIntent,
+                PackageManager.MATCH_ALL);
+        boolean isIntentSafe = activities.size() > 0;
+
+Log.d("hello", String.valueOf(isIntentSafe));
+for(ResolveInfo x : activities) {
+    Log.d("hello",x.toString());
+}
+
     }
 
     public void startService(View view) {
